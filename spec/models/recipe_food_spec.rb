@@ -4,10 +4,10 @@ RSpec.describe RecipeFood, type: :model do
     chef = User.create(name: 'nahom')
     pizza = Food.create(name: 'pizza', measurement_unit: 'grams', price: 2.5, quantity: 4, user: chef)
     recipe_1 = Recipe.create(name: 'recipe 1', preparation_time: 40, cooking_time: 140, description:'it is the most amazing recipe on the planet', public: true, user: chef)
-    subject{RecipeFood.create(recipe: recipe_1, food: pizza)}
+    subject{RecipeFood.create(quantity:2, recipe: recipe_1, food: pizza)}
     describe 'Validations' do
         it 'quantity should be present' do
-            subject.quantity = ''
+            subject.quantity = nil
             expect(subject).to_not be_valid
         end
 
