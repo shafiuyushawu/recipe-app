@@ -1,0 +1,26 @@
+<div>
+  <div>
+    <%= link_to 'Add Food', new_food_path(params[:user_id]) %>
+  </div>
+  <h1 class="text-4xl text-blue-600">Foods list</h1>
+  <table class='table border  w-full'>
+    <thead class=''>
+      <tr class='border'>
+        <th class='border border-black'>Food</th>
+        <th class='border'>Measurement unit</th>
+        <th class='border'>Unit price</th>
+        <th class='border'>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food|%>
+        <tr class='border'>
+          <td class='border'><%= food.name%></td>
+          <td class='border'><%= food.measurement_unit%></td>
+          <td class='border'><%= food.price%></td>
+          <td class='border'><button class='btn btn-sm'>Delete</button></td>
+        </tr>
+      <%end%>
+    <tbody>
+  </table>
+</div>
