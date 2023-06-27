@@ -28,4 +28,15 @@ RSpec.describe "Recipes", type: :request do
       expect(response).to render_template('show')
     end
   end
+  describe 'GET /new' do
+    it 'renders a successful response' do
+      get new_recipe_url
+      expect(response).to be_successful
+    end
+
+    it 'renders a correct template' do
+      get new_recipe_url
+      expect(response).to render_template('new')
+    end
+  end
 end
