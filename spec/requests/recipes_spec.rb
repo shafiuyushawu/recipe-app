@@ -19,6 +19,7 @@ RSpec.describe "Recipes", type: :request do
       expect(response).to render_template('index')
     end
   end
+
   describe 'GET /show' do
     it 'renders a successful response' do
       recipe = Recipe.create! valid_attributes
@@ -32,6 +33,7 @@ RSpec.describe "Recipes", type: :request do
       expect(response).to render_template('show')
     end
   end
+
   describe 'GET /new' do
     it 'renders a successful response' do
       get new_recipe_url
@@ -61,4 +63,15 @@ RSpec.describe "Recipes", type: :request do
       end
     end
   end
+
+  describe 'DELETE /destroy' do
+    it 'delete a recipe' do
+      recipe = Recipe.create! valid_attributes
+      expect { 
+        delete recipe_url(recipe)
+      }.to change(Recipe, :count).by(-1)
+      expect(flash[:notice]).to eq('Recipe successfully deleted')
+    end
+  end
+
 end
