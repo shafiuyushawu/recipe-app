@@ -1,0 +1,9 @@
+<ul class='recipes-container'>
+  <% @recipes.each do |recipe|%>
+    <li>
+      <h3><%= recipe.name%></h3>
+      <%= link_to 'REMOVE'%>
+      <p><%= recipe.description %></p>
+    </li>
+  <% end %>
+</ul>
