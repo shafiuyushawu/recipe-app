@@ -1,26 +1,30 @@
-<div>
-  <div>
-    <%= link_to 'Add Food', new_food_path(params[:user_id]) %>
+<div class="w-full">
+  <div class="flex justify-between mb-3">
+    <h1 class="text-3xl text-blue-600">Foods list</h1>
+    <%= link_to 'Add Food', new_food_path(params[:user_id]), class: 'btn btn-success btn-sm' %>
   </div>
-  <h1 class="text-4xl text-blue-600">Foods list</h1>
-  <table class='table border  w-full'>
-    <thead class=''>
-      <tr class='border'>
-        <th class='border border-black'>Food</th>
-        <th class='border'>Measurement unit</th>
-        <th class='border'>Unit price</th>
-        <th class='border'>Actions</th>
-    </tr>
+  <table class="table border w-full">
+    <thead class="border border-black">
+      <tr class="border text-2xl">
+        <th class="border p-2">Food</th>
+        <th class="border p-2">Measurement unit</th>
+        <th class="border p-2">Unit price</th>
+        <th class="border p-2">Quantity</th>
+        <th class="border p-2">Actions</th>
+      </tr>
     </thead>
-    <tbody>
-      <% @foods.each do |food|%>
-        <tr class='border'>
-          <td class='border'><%= food.name%></td>
-          <td class='border'><%= food.measurement_unit%></td>
-          <td class='border'><%= food.price%></td>
-          <td class='border'><button class='btn btn-sm'>Delete</button></td>
+    <tbody class="border border-black">
+      <% @foods.each do |food| %>
+        <tr class="border border-black">
+          <td class="border  border-black p-1"><%= food.name %></td>
+          <td class="border border-black p-1"><%= food.measurement_unit %></td>
+          <td class="border border-black p-1"><%= food.quantity %></td>
+          <td class="border border-black p-1"><%= food.price %></td>
+          <td class="border border-black p-1">
+            <%= button_to 'Delete', food_path(food.id), method: :delete, class: 'btn btn-secondary btn-sm' %>
+          </td>
         </tr>
-      <%end%>
-    <tbody>
+      <% end %>
+    </tbody>
   </table>
 </div>
