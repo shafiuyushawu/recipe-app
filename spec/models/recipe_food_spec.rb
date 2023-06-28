@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe RecipeFood, type: :model do
   chef = User.create(name: 'nahom')
-  pizza = Food.create(name: 'pizza', measurement_unit: 'grams', price: 2.5, quantity: 4, user: chef)
-  first_recipe = Recipe.create(name: 'recipe 1', preparation_time: 40, cooking_time: 140,
-                               description: 'it is the most amazing recipe on the planet', public: true, user: chef)
-  subject { RecipeFood.create(quantity: 2, recipe: first_recipe, food: pizza) }
+  Food.create(name: 'pizza', measurement_unit: 'grams', price: 2.5, quantity: 4, user: chef)
+  Recipe.create(name: 'recipe 1', preparation_time: 40, cooking_time: 140,
+                description: 'it is the most amazing recipe on the planet', public: true, user: chef)
+  subject
+
   describe 'Validations' do
     it 'quantity should be present' do
       subject.quantity = nil
