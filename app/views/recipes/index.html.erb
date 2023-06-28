@@ -1,9 +1,16 @@
-<ul class='recipes-container'>
-  <% @recipes.each do |recipe|%>
-    <li>
-      <h3><%= recipe.name%></h3>
-      <%= link_to 'REMOVE'%>
-      <p><%= recipe.description %></p>
-    </li>
-  <% end %>
-</ul>
+<div class="container">
+  <%= link_to 'Add recipe', new_recipe_path%>
+  <ul class="flex flex-row">
+    <% @recipes.each do |recipe|%>
+      <%= link_to recipe_path(recipe) do%>
+        <li class ="flex flex-row border">
+          <div class="w-1/2">
+              <h3><%= recipe.name%></h3>
+              <%= button_to 'REMOVE', recipe_path(recipe), method: :delete, style: 'color: red' %>
+          </div>
+          <p class="text-red-500"><%= recipe.description %></p>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

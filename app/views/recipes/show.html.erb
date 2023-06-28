@@ -1,0 +1,10 @@
+<div class=''>
+  <h2><%= @recipe.name%></h2>
+  <div>
+    <p>Preparation time: <%= @recipe.preparation_time%> hour</p>
+    <p>Public</p>
+  </div>
+  <p>Cooking time: <%= @recipe.cooking_time%> hour</p>
+  <p>Steps go here...</p>
+  <%= link_to 'Back to recipes page', recipes_path%>
+</div>
