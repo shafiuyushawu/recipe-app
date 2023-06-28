@@ -7,7 +7,7 @@ class ShoppingListController < ApplicationController
 
     current_user.recipes.includes([:foods]).each do |recipe|
       recipe.foods.each do |food|
-        RecipeFood.find_by(food_id: food.id).quantity
+        q = RecipeFood.find_by(food_id: food.id).quantity
         f = current_user.foods.find(food.id)
         next unless (f.quantity - q).negative? && flag
 
