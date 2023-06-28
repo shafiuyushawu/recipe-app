@@ -1,16 +1,19 @@
-<div class="container">
-  <%= link_to 'Add recipe', new_recipe_path%>
-  <ul class="flex flex-row">
+<div class="container w-full shadow-lg  p-5">
+  <div class='flex justify-between'>
+    <h1 class='text-4xl'>Add Recipe</h1>
+    <%= link_to 'Add recipe', new_recipe_path, class: 'btn btn-success btn-sm '%>
+  </div>
+  <ul class=" w-full ">
     <% @recipes.each do |recipe|%>
       <%= link_to recipe_path(recipe) do%>
-        <li class ="flex flex-row border">
-          <div class="w-1/2">
-              <h3><%= recipe.name%></h3>
-              <%= button_to 'REMOVE', recipe_path(recipe), method: :delete, style: 'color: red' %>
-          </div>
-          <p class="text-red-500"><%= recipe.description %></p>
+        <li class ="flex justify-between px-5  border shadow-xl m-2 w-full">
+          <div class=" grid gap-3 w-1/2 my-2">
+              <h3 class='text-2xl link link-primary'><%= recipe.name%></h3>
+              <%= button_to 'REMOVE', recipe_path(recipe), method: :delete, class: 'btn btn-secondary btn-sm' %>
+          </div><%=  %>
+          <p class="text-xl"><%= recipe.description %></p>
         </li>
-      <% end %>
+      <% end %><%=  %>
     <% end %>
   </ul>
 </div>
