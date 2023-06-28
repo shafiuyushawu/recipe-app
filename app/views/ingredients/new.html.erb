@@ -1,0 +1,19 @@
+<div class="w-full  shadow-lg py-10">
+  <h2 class='text-2xl text-center mb-5'>Add an Ingredient</h2>
+  <%= form_with(model: @recipe_food, url: recipe_ingredients_path) do |form| %>
+    <div class='flex flex-col justify-center items-center gap-4'>
+      <div class="field">
+      <%= form.label :food_id, 'Ingredient: '%>
+         <%= form.select :food_id, options_from_collection_for_select(@foods, :id, :name), { prompt: 'Select an Ingredient' }, class: "select select-bordered w-full max-w-xs" %>
+      </div>
+      <div class="field">
+      <%= form.label :quantity, 'Quantity: '%>
+        <%= form.number_field :quantity, class: "input input-bordered w-full max-w-xs " %>
+      </div>
+      <%= form.submit "Add ingredient", class: "btn btn-primary btn-sm" %>
+  </div>
+  <% end %>
+   <div class="flex justify-center p-1">
+    <%= link_to 'Cancle', recipe_path(@recipe), class: 'btn btn-secondary btn-sm'%>
+  </div>
+</div>
