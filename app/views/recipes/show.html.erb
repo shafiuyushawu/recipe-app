@@ -1,10 +1,41 @@
-<div class=''>
-  <h2><%= @recipe.name%></h2>
-  <div>
-    <p>Preparation time: <%= @recipe.preparation_time%> hour</p>
-    <p>Public</p>
+<div class='w-full flex flex-col gap-4'>
+  <h2 class="text-4xl text-center"><%= @recipe.name%></h2>
+  <div class="flex justify-between">
+    <p class="text-2xl">Preparation time: <%= @recipe.preparation_time%> hour</p>
+    <div class="flex items-center gap-3">
+      <p class="text-2xl">Public</p>
+         <input type="checkbox" id="checkbox" class="checkbox checkbox-primary" <%= @recipe.public? ? 'checked' : '' %> />
+    </div>
   </div>
-  <p>Cooking time: <%= @recipe.cooking_time%> hour</p>
-  <p>Steps go here...</p>
-  <%= link_to 'Back to recipes page', recipes_path%>
+  <p class="text-2xl">Cooking time: <%= @recipe.cooking_time%> hour</p>
+  <p class="text-2xl">Steps go here...</p>
+  <div class="flex justify-between">
+    <%= link_to 'Generate shopping list', '#', class: 'btn btn-success btn-sm'%>
+    <%= link_to 'Add ingredient', new_recipe_ingredient_path(@recipe), class: 'btn btn-success btn-sm'%>
+  </div>
+  <table class="table border w-full">
+    <thead class="border border-black">
+      <tr class="border text-2xl">
+        <th class="border p-2">Food</th>
+        <th class="border p-2">Quantity</th>
+        <th class="border p-2">Value</th>
+        <th class="border p-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="border border-black">
+      <% @recipe.foods.each do |food| %>
+        <tr class="border border-black">
+          <td class="border  border-black p-1"><%= food.name %></td>
+          <td class="border border-black p-1"><%= food.quantity %> <%= food.measurement_unit%></td>
+          <td class="border border-black p-1">$<%= food.price %></td>
+          <td class="border border-black p-1">
+            <%= button_to 'Delete', recipe_ingredient_path(recipe_id: @recipe,food_id: food), method: :delete, class: 'btn btn-secondary btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="flex justify-center">
+    <%= link_to 'Back to recipes page', recipes_path, class: 'btn btn-primary btn-sm'%>
+  </div>
 </div>
