@@ -1,0 +1,19 @@
+<div class="navbar bg-base-100 shadow-2xl">
+  <div class="navbar-start">
+        <%= link_to 'Recipe APP', root_path,  class: "btn btn-ghost normal-case text-4l"%>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li>
+        <%= link_to 'Food List', root_path, class: 'link link-primary'%>
+      </li>
+      <li>
+        <%= link_to 'Recipe List', recipes_path,  class: 'link link-primary' %>
+      </li>
+       
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <a class="btn btn-sm btn-secondary">Logout</a>
+  </div>
+</div>
