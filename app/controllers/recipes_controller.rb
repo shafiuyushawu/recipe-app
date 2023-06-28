@@ -32,8 +32,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     permitted_params = params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description)
-    permitted_params[:public] = params[:recipe][:public] == '1' ? true : false
+    permitted_params[:public] = params[:recipe][:public] == '1'
     permitted_params
   end
-  
 end
