@@ -8,17 +8,17 @@ default: &default
 development:
   <<: *default
   database: recipe_app_development
-  username: postgres
+  username: shafiu
   password: "Soccer"
 
 test:
   <<: *default
   database: recipe_app_test
-  username: postgres
+  username: shafiu
   password: "Soccer"
 
 production:
   <<: *default
   database: recipe_app_production
-  username: postgres
+  username: shafiu
   password: "Soccer"
