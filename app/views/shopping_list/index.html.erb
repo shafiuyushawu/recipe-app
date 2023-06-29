@@ -2,7 +2,7 @@
   <h1 class='text-5xl text-center'>Shopping List</h1>
   <div class="flex justify-between">
     <div class="text-2xl">Amount of food items to buy: <span class="text-3xl"> <%= @foods.length%> </span></div>
-    <div class="text-2xl">Total value of food needed: <span class="text-3xl">$ <%= @total_price * -1%> </span></div>
+    <div class="text-2xl">Total value of food needed: <span class="text-3xl">$ <%= @total_price %> </span></div>
   </div>
 
   <div>
@@ -21,8 +21,8 @@
           <% @foods.each do |food| %>
             <tr class="border">
               <td class="border  p-1"><%= food[:name] %></td>
-              <td class="border p-1"><%= food[:quantity] * -1%></td>
-              <td class="border p-1"><%= food[:price] * -1  %></td>
+              <td class="border p-1"><%= food[:quantity] %></td>
+              <td class="border p-1"><%= food[:price]   %></td>
             </tr>
           <% end %>
         </tbody>
