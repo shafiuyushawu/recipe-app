@@ -78,7 +78,7 @@ RSpec.describe 'Recipes', type: :request do
       expect do
         delete recipe_url(recipe)
       end.to change(Recipe, :count).by(-1)
-      expect([:notice]).to eq('Recipe successfully deleted')
+      expect(flash[:notice]).to eq('Recipe successfully deleted')
     end
   end
 end
