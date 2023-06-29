@@ -20,6 +20,8 @@
     </ul>
   </div>
   <div class="navbar-end">
-    <a class="btn btn-sm btn-secondary">Logout</a>
+    <% if user_signed_in? %>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-secondary' %>
+    <% end %>
   </div>
 </div>
