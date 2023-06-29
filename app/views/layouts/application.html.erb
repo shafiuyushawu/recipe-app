@@ -13,8 +13,10 @@
 
   <body>
     <%= render '/shared/navbar'%>
-     <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+
+    <p class="notice text-center text-green-600"><%= notice%></p>
+    <p class="alert text-center text-yellow-600"><%= alert %></p>
+    
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>

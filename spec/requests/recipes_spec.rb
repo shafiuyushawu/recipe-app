@@ -1,7 +1,12 @@
 require 'rails_helper'
-
 RSpec.describe 'Recipes', type: :request do
-  let!(:chef) { User.create(name: 'Tom') }
+  include Devise::Test::IntegrationHelpers
+  let!(:chef) { User.create(name: 'Tom', email: 'shafiu@gamil.com', password: '123456') }
+
+  before do
+    sign_in chef
+  end
+
   let!(:valid_attributes) do
     { name: 'recipe 1', preparation_time: 40, cooking_time: 140,
       description: 'it is the most amazing recipe on the planet', public: true, user: chef }
@@ -14,16 +19,15 @@ RSpec.describe 'Recipes', type: :request do
 
   describe 'GET /index' do
     it 'returns a successful response' do
-      get recipes_url
+      get recipes_path
       expect(response).to be_successful
     end
 
-    it 'renders a correct template' do
-      get recipes_url
+    it 'renders the correct template' do
+      get recipes_path
       expect(response).to render_template('index')
     end
   end
-
   describe 'GET /show' do
     it 'renders a successful response' do
       recipe = Recipe.create! valid_attributes
@@ -74,7 +78,7 @@ RSpec.describe 'Recipes', type: :request do
       expect do
         delete recipe_url(recipe)
       end.to change(Recipe, :count).by(-1)
-      expect([:notice]).to eq('Recipe successfully deleted')
+      expect(flash[:notice]).to eq('Recipe successfully deleted')
     end
   end
 end

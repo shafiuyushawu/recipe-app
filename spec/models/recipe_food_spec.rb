@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe RecipeFood, type: :model do
-  chef = User.create(name: 'nahom')
-  Food.create(name: 'pizza', measurement_unit: 'grams', price: 2.5, quantity: 4, user: chef)
-  Recipe.create(name: 'recipe 1', preparation_time: 40, cooking_time: 140,
-                description: 'it is the most amazing recipe on the planet', public: true, user: chef)
-  subject
-
+  include Devise::Test::IntegrationHelpers
+  before(:each) do
+    @chef = User.create(name: 'Tom', email: 'shafiu@gamil.com', password: '123456')
+    sign_in @chef
+    @food = Food.create(name: 'pizza', measurement_unit: 'grams', price: 2.5, quantity: 4, user: @chef)
+  end
   describe 'Validations' do
     it 'quantity should be present' do
       subject.quantity = nil
