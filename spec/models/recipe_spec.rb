@@ -1,10 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  chef = User.create(name: 'shafiu')
-  subject do
-    Recipe.create(name: 'recipe 1', preparation_time: 40, cooking_time: 140,
-                  description: 'it is the most amazing recipe on the planet', public: true, user: chef)
+  include Devise::Test::IntegrationHelpers
+  before :each do
+    chef = User.create(name: 'shafiu', email: 'shafiu@gmail.com', password: '123456')
+    sign_in chef
+    subject do
+      Recipe.create(name: 'recipe 1', preparation_time: 40, cooking_time: 140,
+                    description: 'it is the most amazing recipe on the planet', public: true, user: chef)
+    end
   end
   describe 'Validations' do
     it 'name should be present' do
