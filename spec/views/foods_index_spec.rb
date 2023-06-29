@@ -1,6 +1,6 @@
-require 'rails_helper' 
+require 'rails_helper'
 
-RSpec.describe 'Food', type: :feature do 
+RSpec.describe 'Food', type: :feature do
   include Devise::Test::IntegrationHelpers
   describe 'index' do
     before(:each) do
@@ -13,19 +13,19 @@ RSpec.describe 'Food', type: :feature do
       expect(page).to have_content(@food.name)
     end
 
-    it 'renders the  measurement unit of the page' do 
+    it 'renders the  measurement unit of the page' do
       expect(page).to have_content(@food.measurement_unit)
     end
 
-    it 'renders he price of the food' do 
+    it 'renders he price of the food' do
       expect(page).to have_content(@food.price)
     end
 
-    it 'should render a button add food ' do 
+    it 'should render a button add food ' do
       expect(page).to have_content('Add Food')
     end
 
-    it 'redirects to a form for new food' do 
+    it 'redirects to a form for new food' do
       click_link 'Add Food'
       expect(page).to have_current_path(new_food_path)
     end

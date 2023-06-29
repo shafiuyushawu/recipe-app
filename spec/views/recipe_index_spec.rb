@@ -4,7 +4,7 @@ RSpec.describe 'Recipes', type: :feature do
   include Devise::Test::IntegrationHelpers
   describe 'index' do
     before(:each) do
-      @user = User.create(name: 'Nahom', email: 'nahom@mail.com', password: 123456)
+      @user = User.create(name: 'Nahom', email: 'nahom@mail.com', password: 123_456)
       sign_in @user
       @recipe = Recipe.create(user: @user, name: 'Jollof', preparation_time: 2, cooking_time: 1,
                               description: 'Ghanaian dish', public: true)

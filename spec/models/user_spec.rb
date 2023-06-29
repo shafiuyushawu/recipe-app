@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   include Devise::Test::IntegrationHelpers
-  before :each do 
-    @user = User.create(name: 'nahom', email: 'nahom@gmail.com', password: '123456') 
+  before :each do
+    @user = User.create(name: 'nahom', email: 'nahom@gmail.com', password: '123456')
     sign_in @user
   end
   describe 'Validations' do

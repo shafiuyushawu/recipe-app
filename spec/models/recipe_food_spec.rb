@@ -4,7 +4,7 @@ RSpec.describe RecipeFood, type: :model do
   include Devise::Test::IntegrationHelpers
   before(:each) do
     @chef = User.create(name: 'Tom', email: 'shafiu@gamil.com', password: '123456')
-    sign_in @chef 
+    sign_in @chef
     @food = Food.create(name: 'pizza', measurement_unit: 'grams', price: 2.5, quantity: 4, user: @chef)
   end
   describe 'Validations' do

@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Food, type: :model do
   include Devise::Test::IntegrationHelpers
-  before :each  do
+  before :each do
     @chef = User.create(name: 'shafiu', email: 'shafiu@gmail.com', password: '123456')
     sign_in @chef
     subject { Food.create(name: 'pizza', measurement_unit: 'grams', price: 2.5, quantity: 4, user: @chef) }
   end
-  
+
   describe 'Validations' do
     it 'name should be present' do
       subject.name = ''

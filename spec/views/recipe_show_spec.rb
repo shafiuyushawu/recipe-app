@@ -4,7 +4,7 @@ RSpec.describe 'Recipes', type: :feature do
   include Devise::Test::IntegrationHelpers
   describe 'show' do
     before(:each) do
-      @user = User.create(name: 'Shafiu', email: 'shafiu@mail.com', password: 123456)
+      @user = User.create(name: 'Shafiu', email: 'shafiu@mail.com', password: 123_456)
       sign_in @user
       @recipe = Recipe.create(user: @user, name: 'Jolof', preparation_time: 2, cooking_time: 1,
                               description: 'Ghanaian recipe', public: true)
@@ -31,7 +31,6 @@ RSpec.describe 'Recipes', type: :feature do
       click_link 'Add ingredient'
       expect(page).to have_current_path(new_recipe_ingredient_path(@recipe))
     end
-    
 
     it 'renders shopping list button' do
       expect(page).to have_content('Generate shopping list')

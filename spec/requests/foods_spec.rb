@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Foods', type: :request do
   include Devise::Test::IntegrationHelpers
-  before :each do 
-    @user  =User.create(name: 'Tom', email: 'shafiu@gamil.com', password: '123456')
+  before :each do
+    @user = User.create(name: 'Tom', email: 'shafiu@gamil.com', password: '123456')
     sign_in @user
   end
   describe 'GET /index' do
