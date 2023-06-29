@@ -13,7 +13,7 @@ class ShoppingListController < ApplicationController
 
         @foods << {
           name: f.name,
-          quantity: f.quantity - 1,
+          quantity: f.quantity ,
           price: f.price * (f.quantity - 1)
         }
       end
