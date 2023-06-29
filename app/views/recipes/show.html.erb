@@ -26,7 +26,8 @@
       <% @recipe.foods.each do |food| %>
         <tr class="border border-black">
           <td class="border  border-black p-1"><%= food.name %></td>
-          <td class="border border-black p-1"><%= food.quantity %> <%= food.measurement_unit%></td>
+          <%@quantity = RecipeFood.find_by(food_id: food.id).quantity%>
+          <td class="border border-black p-1"><%= @quantity %> <%= food.measurement_unit%></td>
           <td class="border border-black p-1">$<%= food.price %></td>
           <td class="border border-black p-1">
             <%= button_to 'Delete', recipe_ingredient_path(recipe_id: @recipe,food_id: food), method: :delete, class: 'btn btn-secondary btn-sm' %>
