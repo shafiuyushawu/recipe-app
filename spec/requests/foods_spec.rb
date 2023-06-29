@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Foods', type: :request do
+  include Devise::Test::IntegrationHelpers
+  before :each do 
+    @user  =User.create(name: 'Tom', email: 'shafiu@gamil.com', password: '123456')
+    sign_in @user
+  end
   describe 'GET /index' do
     it 'returns a successful response' do
       get root_path
@@ -46,10 +51,10 @@ RSpec.describe 'Foods', type: :request do
 
   describe 'DELETE /destroy' do
     it 'deletes a food' do
-      food = Food.create(id: 1, name: 'food_to_delete', measurement_unit: 'grams', price: 2.5, quantity: 4, user: @chef)
+      food = Food.create(name: 'food_to_delete', measurement_unit: 'grams', price: 2.5, quantity: 4, user: @user)
 
       expect do
-        delete food_path(food.id)
+        delete food_path(food)
       end.to change(Food, :count).by(-1)
 
       expect(response).to redirect_to(root_path)
