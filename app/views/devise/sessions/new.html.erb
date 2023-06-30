@@ -1,0 +1,26 @@
+<div class= 'grid gird-col  justify-center items-center shadow-xl w-full'>
+  <h2 class='text-4xl text-center mb-5 mx-16'>Log in</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field mb-5">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered input-primary w-full max-w-xs" %>
+    </div>
+
+    <div class="field mb-5">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "input input-bordered input-primary w-full max-w-xs" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field mb-5 flex  gap-4">
+        <%= f.check_box :remember_me, class: "checkbox checkbox-primary" %>
+        <%= f.label :remember_me, class: "label-text text-xl" %>
+      </div>
+    <% end %>
+
+    <div class="actions label cursor-pointer">
+      <%= f.submit "Log in", class: 'btn btn-primary w-full' %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>
